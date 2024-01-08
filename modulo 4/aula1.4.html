@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>de que país voce é?</h1>
+    <span id="span">escreva seu país: </span>
+    <input type="text" name="txttext" id="txttext">
+    <input type="button" value="Verificar" onclick="verificarPais()">
+    <div id="res">
+
+
+    </div>
+</body>
+<script>
+    //usar .value para pegar o valor quando não for number
+    //se for number, usar .var vel = Number(txtv.value)
+    function verificarPais() {
+        var texto = document.getElementById('txttext').value
+        var resposta = document.getElementById('res')
+
+        if (texto === 'brasil') {
+            resposta.innerHTML = 'voce é brasileiro'
+        } else {
+            resposta.innerHTML = 'voce é estrangeiro'
+        }
+        
+    }
+
+    
+</script>
+
+</html>

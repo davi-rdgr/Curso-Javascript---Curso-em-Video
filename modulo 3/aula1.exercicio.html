@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exemplo de Página</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #output {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="h11">Exemplo de Página</h1>
+    <button id="botao" onclick="mostrarMensagem()">Clique Aqui</button>
+    <div id="output"></div>
+  </div>
+
+  <script>
+    function mostrarMensagem() {
+      var outputDiv = document.getElementById("output");
+      outputDiv.innerHTML = "Olá! Você clicou no botão.";
+    }
+
+    var botao = window.document.getElementById('botao')
+    botao.style.background = 'yellow'
+    botao.style.color = 'red'
+    botao.style.padding = '40px'
+    botao.style.paddingLeft = 0
+    botao.style.fontSize = '25px'
+    botao.innerText = 'manda foto dabuceta'
+    
+    var outputDiv = window.document.getElementById('output')
+    outputDiv.style.background = 'blue'
+
+    var h1 = window.document.getElementById('h11')
+    h1.innerText = 'manda vai fdp'
+
+  </script>
+</body>
+</html>

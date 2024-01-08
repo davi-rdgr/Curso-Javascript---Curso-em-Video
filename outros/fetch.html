@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PokeAPI - Busca Dinâmica</title>
+</head>
+
+<body>
+    <h1>Busca de Pokemons</h1>
+    <!-- Formulário onde o usuário pode digitar o nome do Pokemon -->
+    <form>
+        <label for="pokemonName">Digite o nome do Pokemon:</label>
+        <input type="text" id="pokemonName" required>
+        <button type="submit">Buscar</button>
+    </form>
+    <!-- Local onde serão exibidas as informações do Pokemon -->
+    <div id="pokemonInfo"></div>
+
+    <script>
+        // Adiciona um ouvinte de eventos para o evento de envio do formulário
+        document.querySelector('form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Evita o envio padrão do formulário (que recarregaria a página)
+
+            // Obtém o valor digitado pelo usuário e converte para letras minúsculas
+            const pokemonName = document.getElementById('pokemonName').value.toLowerCase();
+
+            const apiUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
+            // Faz uma requisição para a API do PokeAPI
+            fetch(apiUrl)
+                .then((res) => res.json()) // Converte a resposta em formato JSON
+                .then(data => {
+                    // Obtém o elemento onde as informações do Pokemon serão exibidas
+                    const pokemonInfo = document.getElementById('pokemonInfo');
+
+                    // Remove o conteúdo anterior, se houver
+                    if (pokemonInfo.firstChild) {
+                        pokemonInfo.removeChild(pokemonInfo.firstChild);
+                    }
+
+                    // Extrai o nome e a imagem do Pokemon da resposta da API
+                    const name = data.name;
+                    const image = data.sprites.front_default;
+                    const backImage = data.sprites.back_default;
+                    const weight = data.weight;
+                    
+                    // Cria elementos HTML para exibir o nome e a imagem do Pokemon
+                    const infoDiv = document.createElement('div');
+                    const nameElement = document.createElement('h2');
+                    const pokeWeight = document.createElement('p')
+                    const imageElement = document.createElement('img');
+                    const imageElementBack = document.createElement('img');
+
+                    nameElement.textContent = name;
+                    pokeWeight.innerHTML = weight;
+                    imageElement.src = image;
+                    imageElementBack.src = backImage;
+
+                    imageElement.style.height = '500px'
+                    // Adiciona os elementos criados ao elemento principal das informações do Pokemon
+                    infoDiv.appendChild(nameElement);
+                    infoDiv.appendChild(imageElement);
+                    infoDiv.appendChild(imageElementBack);
+                    infoDiv.appendChild(pokeWeight);
+                    pokemonInfo.appendChild(infoDiv);
+                })
+                .catch((err) => {
+                    // Em caso de erro (Pokemon não encontrado ou erro na API), exibe uma mensagem de erro
+                    const pokemonInfo = document.getElementById('pokemonInfo');
+                    if (pokemonInfo.firstChild) {
+                        pokemonInfo.removeChild(pokemonInfo.firstChild);
+                    }
+
+                    const errorElement = document.createElement('p');
+                    errorElement.textContent = "Pokemon não encontrado!";
+                    pokemonInfo.appendChild(errorElement);
+                });
+        });
+    </script>
+</body>
+
+</html>

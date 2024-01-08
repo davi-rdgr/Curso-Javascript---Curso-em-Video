@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+
+
+
+    <script>
+    
+    // get element by name
+    // sempre declarar variávesl para o que eu quero mecher 
+    // para css, declaro a variável e estilo: "corpo.style" e depois no que quero mecher e como
+    // posso pegar palavras reservadas como body, etc, ou selecioná-las com get elements e query selector
+    // para mudar o texto posso usar o innerText ou InnerHtml
+    var corpo = window.document.body
+    corpo.style.background = 'red'
+
+    var p1 = window.document.getElementsByTagName('p')[0]
+    window.document.write('esta escrito assim: ' + p1.innerText)
+    p1.style.color = 'blue'
+
+
+    //get element by id
+    var ac = window.document.getElementById('msg')
+    ac.style.background = 'blue'
+    ac.innerText = 'estou aguardando...'
+    var d = window.document.getElementById('msg')
+    d.innerText = 'ola'
+
+    //query selector
+
+    var d = window.document.querySelector('div#msg')
+    d.style.color = 'yellow'
+
+
+    </script>
+
+
+</body>
+</html>
